@@ -1,6 +1,10 @@
 import Redis from "redis";
 
-export const redisClient = Redis.createClient();
+export const redisClient = Redis.createClient(process.env.REDIS_URL, {
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
 
 const DEFAULT_EXPIRATION = 3600;
 
@@ -10,6 +14,7 @@ export const getOrSetCache = (key, callback) => {
       if (err) return reject(err);
 
       if (data) {
+        console.log(data);
         return resolve(JSON.parse(data));
       }
 
