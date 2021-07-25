@@ -1,10 +1,6 @@
 import Redis from "redis";
 
-export const redisClient = Redis.createClient(process.env.REDIS_URL, {
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+export const redisClient = Redis.createClient(process.env.REDIS_URL);
 
 const DEFAULT_EXPIRATION = 3600;
 
