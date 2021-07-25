@@ -10,7 +10,6 @@ export const getOrSetCache = (key, callback) => {
       if (err) return reject(err);
 
       if (data) {
-        console.log(data);
         return resolve(JSON.parse(data));
       }
 

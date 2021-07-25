@@ -21,8 +21,6 @@ export const retrieveMoviesByType = async (req, res) => {
 export const retrieveMovieDetails = async (req, res) => {
   const id = req.params.id;
 
-  console.log(id);
-
   const details = await getOrSetCache(`movies/${id}`, async () => {
     const { data } = await axios.get(
       `${REQUEST_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`
